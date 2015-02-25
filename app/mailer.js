@@ -1,6 +1,6 @@
 var nodemailer = require('nodemailer');
 
-var mailpw = require('fs').readFileSync('/info/mailpw.txt','utf8');
+var mailpw = require('fs').readFileSync('/var/w3/mailpw.txt','utf8');
 
 var transporter = nodemailer.createTransport({
     service: 'Gmail',
