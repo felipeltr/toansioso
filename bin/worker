@@ -4,7 +4,10 @@ var goCheck = require('../app/go-check');
 var mongo = require('mongodb');
 var monk = require('monk');
 
-var db = monk(process.env.MONGOLAB_URI);
+
+var dburi = require('fs').readFileSync('/var/w3/dburi.txt','utf8');
+
+var db = monk(dburi);
 var concurrency = Number(process.env.CONCURRENCY || 2);
 
 goCheck(db, concurrency, process.env.PARTITION);

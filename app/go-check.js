@@ -49,7 +49,7 @@ module.exports = function(db, concurrency, partition) {
 
       if(i < min || i > max) {
         // console.log('Skipping user ' + user.email + ' (' + i + ') for now.');
-        return nullCbFn;
+        //return nullCbFn;
       }
 
       if(user.n === null || user.n === undefined){

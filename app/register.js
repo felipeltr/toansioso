@@ -11,6 +11,7 @@ module.exports = function(req, res) {
     n = 1;
   }
 
+  
   var users = req.db.get('users');
 
   users.find({email: email}, function(err, docs){
