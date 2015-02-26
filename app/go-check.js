@@ -17,40 +17,46 @@ module.exports = function(db, concurrency, partition) {
 
   users.find({done: false}, function(err, all){
 
+    /*** Filters now controlled by crontab !! ***/
     // filters
-    if(weekday === 6 || weekday === 0) {
-      // on sat&sun, only check every 4 hours
-      if(hours % 4 !== 0){
-        console.log('Weekend skip.');
-        process.exit(0);
-      }
-    } else {
-      // on weekdays, 
-      if(hours == 23 ||  hours == 1 || hours == 3 ||  hours == 5) {
-        console.log('Weekday late night skip.');
-        process.exit(0);
-      }
-    }
-
-    if(partition === undefined || partition === null) {
-      partition = parseInt(minutes/10);
-    } else {
-      partition = parseInt(partition);
-    }
     
-    var total = all.length;
-    var per = Math.ceil(total/6);
-    var min = partition*per;
-    var max = (partition+1)*per;
+    // if(weekday === 6 || weekday === 0) {
+    //   // on sat&sun, only check every 4 hours
+    //   if(hours % 4 !== 0){
+    //     console.log('Weekend skip.');
+    //     process.exit(0);
+    //   }
+    // } else {
+    //   // on weekdays, 
+    //   if(hours == 23 ||  hours == 1 || hours == 3 ||  hours == 5) {
+    //     console.log('Weekday late night skip.');
+    //     process.exit(0);
+    //   }
+    // }
+    
 
-    console.log('Starting check with users from partition ' + partition + '...');
+    /*** Partitions disabled ! ***/
+    
+    // if(partition === undefined || partition === null) {
+    //   partition = parseInt(minutes/10);
+    // } else {
+    //   partition = parseInt(partition);
+    // }
+    
+    // var total = all.length;
+    // var per = Math.ceil(total/6);
+    // var min = partition*per;
+    // var max = (partition+1)*per;
+
+    // console.log('Starting check with users from partition ' + partition + '...');
+    
 
     var tasks = all.map(function(user, i){
 
-      if(i < min || i > max) {
-        // console.log('Skipping user ' + user.email + ' (' + i + ') for now.');
-        //return nullCbFn;
-      }
+      // if(i < min || i > max) {
+      //   console.log('Skipping user ' + user.email + ' (' + i + ') for now.');
+      //   return nullCbFn;
+      // }
 
       if(user.n === null || user.n === undefined){
         user.n = 1;
