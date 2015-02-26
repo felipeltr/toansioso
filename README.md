@@ -41,7 +41,7 @@ Add the worker process to the crontab using `crontab -e`. The following line wil
 
 Run `app.js` using
 ```
-node app.js
+sudo node app.js
 ```
 
 Alternatively, in order to keep Node running continuously, you may install and use the forever package.
@@ -52,3 +52,5 @@ Then,
 ```
 sudo forever start app.js
 ```
+
+Now you`re ready to go!
