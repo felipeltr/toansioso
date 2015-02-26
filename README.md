@@ -27,7 +27,7 @@ Inside `/var/w3`, clone this project into a new directory (you may name it `toan
 
 To configure the database connection, create a file named `dburi.txt` on `/var/w3`. Inside this file, paste the MongoDB database URI.
 
-To configure the email account, first update the e-mail address info that you`re going to use on `app/mailer.js`, then create a file named `mailpw.txt` on `/var/w3`. Inside this file, paste the e-mail account password.
+To configure the email account, first update the e-mail address info that you are going to use on `app/mailer.js`, then create a file named `mailpw.txt` on `/var/w3`. Inside this file, paste the e-mail account password.
 
 Change your working directory to `/var/w3/toansioso` and run the following command to install the required Node packages.
 ```
