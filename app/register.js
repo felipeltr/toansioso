@@ -38,7 +38,7 @@ module.exports = function(req, res) {
         
         promise.success(function(doc){
           res.json(200, {docs: docs});
-          var url = process.env.URL + 'unregister?token=' + token;
+          var url = 'http://toansioso.zapto.org/' + 'unregister?token=' + token;
           mailer({
             to: email,
             subject: 'Bem-vindo ao TOAnsioso',
