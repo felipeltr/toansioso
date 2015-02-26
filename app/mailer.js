@@ -1,4 +1,5 @@
 var nodemailer = require('nodemailer');
+var Deferred = require('deferred')
 
 var mailpw = require('fs').readFileSync('/var/w3/mailpw.txt','utf8');
 
@@ -12,6 +13,7 @@ var transporter = nodemailer.createTransport({
 
 
 module.exports = function(opts) {
+  var def = Deferred();
 
   opts.from = '<TOAnsioso> toansioso2@gmail.com';
 
@@ -20,7 +22,7 @@ module.exports = function(opts) {
           console.log(error);
           def.reject(error);
       }else{
-          def.resolve(response);
+          def.resolve(info.response);
           console.log('Message sent: ' + info.response);
       }
   });
