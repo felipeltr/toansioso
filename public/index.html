@@ -108,13 +108,14 @@
   <a href="https://github.com/gberger/toansioso"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
 
 <script>
-  // (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  // (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  // m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  // })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-  // ga('create', 'UA-38564882-8', window.location.host);
-  // ga('send', 'pageview');
+  ga('create', 'UA-60154626-1', 'auto');
+  ga('send', 'pageview');
+
 </script>
 
 <script>
@@ -145,12 +146,12 @@
       var url = $('[name=url]').val();
 
       if(!validateURL(url)){
-        //ga('send', 'event', 'SUBMISSION', 'WRONG_URL');
+        ga('send', 'event', 'SUBMISSION', 'WRONG_URL');
         addAlert('danger', 'Parece que a URL não está correta... Siga novamente as instruções e tente novamente!');
         return;
       }
 
-      //ga('send', 'event', 'Submission', 'START');
+      ga('send', 'event', 'Submission', 'START');
       var promise = $.post('/register', {email: email, password: password, n: n, url: url});
       $('.toansioso-form').hide();
       $('.loading').show();
@@ -162,7 +163,7 @@
       promise.fail(function(res){
         var err = res.responseJSON.error;
 
-        //ga('send', 'event', 'Submission', err);
+        ga('send', 'event', 'Submission', err);
 
         $form.show();
 
@@ -183,7 +184,7 @@
 
       promise.success(function(){
         addAlert('success', 'Pronto! Agora é só esperar que enviaremos um email quando seu TOA chegar. Boa sorte!');
-        //ga('send', 'event', 'Submission', 'OK');
+        ga('send', 'event', 'Submission', 'OK');
       })
     })
   })
