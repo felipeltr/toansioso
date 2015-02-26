@@ -9,7 +9,6 @@ module.exports = function(email, password, url) {
   });
   
   var def = Deferred();
-  console.log(url);
 
   browser.visit(url).then(function(){
     
